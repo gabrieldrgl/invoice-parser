@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  icms_value: 9.99
+  ipi_value: 9.99
+  pis_value: 9.99
+  cofins_value: 9.99
+  product: one
+
+two:
+  icms_value: 9.99
+  ipi_value: 9.99
+  pis_value: 9.99
+  cofins_value: 9.99
+  product: two
