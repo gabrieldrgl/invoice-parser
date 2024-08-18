@@ -71,3 +71,5 @@ end
 gem "rubyzip", "~> 2.3"
 
 gem "devise", "~> 4.9"
+
+gem "axlsx_rails", "~> 0.6.1"

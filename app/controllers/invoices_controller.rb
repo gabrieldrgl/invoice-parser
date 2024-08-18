@@ -5,6 +5,12 @@ class InvoicesController < ApplicationController
 
   def index
     @invoices = Invoice.where("number LIKE ?", "%#{params[:filter]}%").all
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+      format.xlsx { render xlsx: "export", filename: "invoices.xlsx" }
+    end
   end
 
   def new
@@ -45,7 +51,6 @@ class InvoicesController < ApplicationController
       f.write(file.read)
     end
 
-    # Passa o caminho do arquivo para o job do Sidekiq
     ProcessBulkInvoiceJob.perform_async(temp_file_path.to_s)
     flash[:success] = "Arquivo ZIP processado com sucesso."
   end

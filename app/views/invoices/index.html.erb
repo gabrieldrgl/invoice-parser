@@ -11,4 +11,6 @@
   <%= render "list", invoices: @invoices %>
 <% end %>
 
-<%= link_to 'Upload New Invoice', new_invoice_path %>
+<%= link_to "Upload New Invoice", new_invoice_path %>
+
+<%= link_to "Export as Excel", invoices_path(format: :xlsx) %>

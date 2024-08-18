@@ -1,0 +1,29 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Invoices") do |sheet|
+  # Cabeçalhos
+  sheet.add_row ["Invoice Number", "Emission Date", "Issuer Name", "Recipient Name", "Product Name", "NCM", "CFOP", "Unit", "Quantity", "Unit Price", "ICMS Value", "IPI Value", "PIS Value", "COFINS Value"]
+
+  @invoices.each do |invoice|
+    invoice.products.each do |product|
+      product.taxes.each do |tax|
+        sheet.add_row [
+          invoice.number,
+          invoice.emission_date,
+          invoice.issuer.name,
+          invoice.recipient.name,
+          product.name,
+          product.ncm,
+          product.cfop,
+          product.unit,
+          product.quantity,
+          product.unit_price,
+          tax.icms_value,
+          tax.ipi_value,
+          tax.pis_value,
+          tax.cofins_value
+        ]
+      end
+    end
+  end
+end
