@@ -69,3 +69,5 @@ group :test do
 end
 
 gem "rubyzip", "~> 2.3"
+
+gem "devise", "~> 4.9"

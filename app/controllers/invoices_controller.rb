@@ -1,4 +1,6 @@
 class InvoicesController < ApplicationController
+  before_action :authenticate_user!
+
   NAMESPACE = { nfe: "http://www.portalfiscal.inf.br/nfe" }
 
   def index
