@@ -1,5 +1,5 @@
 <h1>Processed Invoices</h1>
-<%= form_with url: invoices_path, method: :get, data: { turbo_frame: "invoices_list" } do %>
+<%= form_with url: invoices_path, method: :get, data: { turbo_frame: "invoices_list", controller: "filter", action: "input->filter#submit" } do %>
   <div class="form-group">
     <%= label_tag :filter, "Search by Number" %>
     <%= text_field_tag :filter %>
