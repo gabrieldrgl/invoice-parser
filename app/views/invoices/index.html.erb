@@ -1,30 +1,14 @@
 <h1>Processed Invoices</h1>
+<%= form_with url: invoices_path, method: :get, data: { turbo_frame: "invoices_list" } do %>
+  <div class="form-group">
+    <%= label_tag :filter, "Search by Number" %>
+    <%= text_field_tag :filter %>
+  </div>
+<% end %>
 
-<% if @invoices.any? %>
-  <table>
-    <thead>
-      <tr>
-        <th>Invoice Number</th>
-        <th>Issuer</th>
-        <th>Recipient</th>
-        <th>Date</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @invoices.each do |invoice| %>
-        <tr>
-          <td><%= invoice.number %></td>
-          <td><%= invoice.issuer.name %></td>
-          <td><%= invoice.recipient.name %></td>
-          <td><%= invoice.emission_date %></td>
-          <td><%= link_to 'View', invoice_path(invoice) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>No invoices found.</p>
+
+<%= turbo_frame_tag "invoices_list" do %>
+  <%= render "list", invoices: @invoices %>
 <% end %>
 
 <%= link_to 'Upload New Invoice', new_invoice_path %>

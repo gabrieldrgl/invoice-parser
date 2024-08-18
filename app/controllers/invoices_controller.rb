@@ -2,7 +2,7 @@ class InvoicesController < ApplicationController
   NAMESPACE = { nfe: "http://www.portalfiscal.inf.br/nfe" }
 
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.where("number LIKE ?", "%#{params[:filter]}%").all
   end
 
   def new

@@ -1,0 +1,26 @@
+<% if invoices.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Invoice Number</th>
+        <th>Issuer</th>
+        <th>Recipient</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% invoices.each do |invoice| %>
+        <tr>
+          <td><%= invoice.number %></td>
+          <td><%= invoice.issuer.name %></td>
+          <td><%= invoice.recipient.name %></td>
+          <td><%= invoice.emission_date %></td>
+          <td><%= link_to 'View', invoice_path(invoice) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No invoices found.</p>
+<% end %>
