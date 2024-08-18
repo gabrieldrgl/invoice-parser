@@ -3,8 +3,9 @@ class ProcessInvoiceJob
 
   NAMESPACE = { nfe: "http://www.portalfiscal.inf.br/nfe" }
 
-  def perform(xml_content)
-    doc = Nokogiri::XML(xml_content)
+  def perform(xml)
+    doc = Nokogiri::XML(xml)
+
     invoice = Invoice.create!(
       series: doc.at_xpath('//nfe:ide/nfe:serie', NAMESPACE)&.text,
       number: doc.at_xpath('//nfe:ide/nfe:nNF', NAMESPACE)&.text,
