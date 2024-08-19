@@ -73,3 +73,11 @@ gem "rubyzip", "~> 2.3"
 gem "devise", "~> 4.9"
 
 gem "axlsx_rails", "~> 0.6.1"
+
+gem "rspec-rails", "~> 6.1"
+
+gem "factory_bot_rails", "~> 6.4"
+
+gem "faker", "~> 3.4"
+
+gem "shoulda-matchers", "~> 6.4"
